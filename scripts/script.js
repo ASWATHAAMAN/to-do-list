@@ -48,20 +48,15 @@ function addItemToDom(item) {
 }
 
 function deletedItem(id) {
-  data = data.filter((item) => {
-    item.id !== id;
-  });
+  data = data.filter((item) => item.id !== id);
   addItemsToDom(data);
 }
 
 function editedItem(id) {
   isEditing = true;
   addEl.innerText = `Edit`;
-  itemToEdit = data.find((item) => {
-    item.id === id;
-  });
+  itemToEdit = data.find((item) => item.id === id);
   titleEl.value = itemToEdit.title;
-  
 }
 
 // eventListeners
@@ -70,7 +65,7 @@ addEl.addEventListener(`click`, () => {
   if (input) {
     if (isEditing) {
       data = data.map((item) => {
-        if (item.id === id) {
+        if (item.id === itemToEdit.id) {
           let updatedItem = {
             id: item.id,
             title: input,
@@ -83,7 +78,7 @@ addEl.addEventListener(`click`, () => {
       addItemsToDom(data);
       isEditing = false;
       addEl.innerText = `Add`;
-      itemToEdit = {} 
+      itemToEdit = {};
     } else {
       let newItem = {
         id: Date.now(),
