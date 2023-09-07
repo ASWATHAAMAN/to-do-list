@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List App</title>
+    <link
+      rel="shortcut icon"
+      href="./images/dress-code.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./styles/normalize.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-container">
+        <input
+          type="text"
+          class="title"
+          id="title"
+          placeholder="Write your task here..."
+        />
+        <button type="button" class="add" id="add">Add</button>
+      </div>
+      <div class="hero-container">
+        <p class="tasks" id="tasks">Clear all tasks</p>
+        <p class="completed-tasks">Clear completed tasks</p>
+      </div>
+      <div class="db-container" id="db-container">
+        <div class="db-one" id="db-one">
+          <p class="line-one">You have nothing task today!</p>
+          <p class="line-two">Enter your tasks today above.</p>
+        </div>
+      </div>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>
