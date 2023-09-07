@@ -93,5 +93,10 @@ addEl.addEventListener(`click`, () => {
   }
 });
 
+tasksEl.addEventListener(`click`, () => {
+  dbContainerEl.innerHTML = null;
+  data.splice(0,data.length)
+});
+
 // init settings
 init();

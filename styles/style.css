@@ -94,7 +94,7 @@ img {
   font-weight: 700;
 }
 .db-one {
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 .db-two {
   display: flex;
@@ -118,5 +118,10 @@ img {
   border: none;
   cursor: pointer;
 }
-
+.close{
+  visibility: hidden;
+}
+.open{
+  display: block;
+}
 
