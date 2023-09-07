@@ -5,12 +5,16 @@ const titleEl = document.getElementById(`title`),
   tasksEl = document.getElementById(`tasks`),
   dbOneEl = document.getElementById(`db-one`),
   dbTwoEl = document.getElementById(`db-two`),
-  dbContainerEl = document.getElementById(`db-container`)
+  dbContainerEl = document.getElementById(`db-container`);
 // global variables
 let data = [];
+let isEditing;
+let itemToEdit;
 
 // functions
 function init() {
+  isEditing = false;
+  addEl.innerText = `Add`;
   addItemsToDom(data);
 }
 
@@ -25,7 +29,6 @@ function addItemsToDom(items) {
 
 function addItemToDom(item) {
   const { title, id } = item;
-  console.log(item);
   const listEl = document.createElement(`li`);
   listEl.classList.add(`db-two`);
   listEl.innerHTML = `<div class="db-two" id="db-two">
@@ -44,27 +47,56 @@ function addItemToDom(item) {
   dbContainerEl.appendChild(listEl);
 }
 
-function deletedItem(id){
-  data.filter((item) =>{
+function deletedItem(id) {
+  data = data.filter((item) => {
     item.id !== id;
-    addItemsToDom(data);
-  })
+  });
+  addItemsToDom(data);
+}
+
+function editedItem(id) {
+  isEditing = true;
+  addEl.innerText = `Edit`;
+  itemToEdit = data.find((item) => {
+    item.id === id;
+  });
+  titleEl.value = itemToEdit.title;
+  
 }
 
 // eventListeners
-addEl.addEventListener(`click`, () =>{
+addEl.addEventListener(`click`, () => {
   const input = titleEl.value;
-  if(input){
-    let newItem = {
-      id: Date.now(),
-      title:input
+  if (input) {
+    if (isEditing) {
+      data = data.map((item) => {
+        if (item.id === id) {
+          let updatedItem = {
+            id: item.id,
+            title: input,
+          };
+          return updatedItem;
+        } else {
+          return item;
+        }
+      });
+      addItemsToDom(data);
+      isEditing = false;
+      addEl.innerText = `Add`;
+      itemToEdit = {} 
+    } else {
+      let newItem = {
+        id: Date.now(),
+        title: input,
+      };
+      data.push(newItem);
+      addItemsToDom(data);
     }
-    data.push(newItem);
-  console.log(addItemsToDom(data))
-  }else{
-    alert(`input is required`)
+    titleEl.value = null;
+  } else {
+    alert(`input is required`);
   }
-})
+});
 
 // init settings
 init();
